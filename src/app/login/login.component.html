@@ -1,0 +1,32 @@
+<div class="login-container">
+    <div class="login-section">
+        <h1 class="login-section-title">Login</h1>
+        <h2 class="login-section-welcome-message"> Welcome back :)</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-section-form">
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="pat@example.com" formControlName="email">
+                    <mat-error *ngIf="loginForm.get('email')!.invalid">Please enter a valid email</mat-error>
+                    </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="loginForm.get('password')!.invalid">Please enter password</mat-error>
+                    </mat-form-field>
+            </div>
+            <button [disabled]="loginForm.invalid" mat-flat-button color="accent" class="login-button">Login</button>
+        </form>
+        <div class="or-line">
+            <span>or</span>
+        </div>
+        <div class="new-user">
+            New User? <a routerLink="/register" class="create-account-link">Create Account</a>
+        </div>
+    </div>
+</div>

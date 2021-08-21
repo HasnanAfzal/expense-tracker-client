@@ -1,0 +1,52 @@
+@import "../../shared-styles";
+
+.categories {
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    &-container {
+        height: 100%;
+        width: 100%;        
+        padding: 18px;
+    }
+
+    &-title {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    &-create-section {
+        margin: 24px 0;
+    }
+
+    &-form {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    &-list-section {
+        overflow: auto;
+        height: 100%;
+    }
+
+    &-list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid $asbestos-color;
+        margin-bottom: 12px;
+
+        &-name {
+            font-size: 1.4em;
+        }
+
+    }
+
+    &-delete-icon {
+        color: red;
+    }
+
+}

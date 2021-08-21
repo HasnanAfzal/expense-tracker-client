@@ -1,0 +1,37 @@
+<div class="add-vendor"
+  [@slideUpAnimation]="state"
+  (@slideUpAnimation.done)="animationEnded()">
+    <div class="add-vendor-body">
+        <form [formGroup]="addEditVendorForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="fill">
+                <mat-label>Vendor Name</mat-label>
+                <input matInput autocomplete="off" formControlName="name">
+                <mat-error *ngIf="addEditVendorForm.get('name')!.invalid">Please enter a valid vendor name</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Vendor Address</mat-label>
+                <textarea matInput formControlName="address"></textarea>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Website</mat-label>
+                <input matInput autocomplete="off" formControlName="website">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Vendor Type</mat-label>
+                <input type="text"
+                       aria-label="Vendor Type"
+                       matInput
+                       [matAutocomplete]="auto"
+                       formControlName="vendorType">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayProperty">
+                  <mat-option *ngFor="let vendorType of filteredVendorTypes" [value]="vendorType">
+                    {{ vendorType.name }}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+        </form>
+    </div>
+    <div class="add-vendor-footer">
+        <button mat-flat-button color="accent" (click)="state = 'close'" [disabled]="addEditVendorForm.invalid">Create Vendor</button>
+    </div>
+</div>

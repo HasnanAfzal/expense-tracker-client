@@ -1,0 +1,23 @@
+<nav class="navbar">
+    <input type="checkbox" id="check" class="checkbox" hidden>
+    <div class="hamburger-menu">
+        <label for="check" class="menu">
+            <div class="menu-line menu-line-1"></div>
+            <div class="menu-line menu-line-2"></div>
+            <div class="menu-line menu-line-3"></div>
+        </label>
+    </div>
+    <div class="navbar-navigation">
+        <div class="header">
+            Expense Tracker
+        </div>
+        <!-- <div class="menu-item">
+            <label for="check"><a class="menu-item-anchor" href="#">Dashboard</a></label>
+        </div> -->
+        <label for="check" class="menu-item" matRipple routerLink="/home/categories">Categories</label>
+        <label for="check" class="menu-item" matRipple routerLink="/home/items">Items</label>
+        <label for="check" class="menu-item" matRipple routerLink="/home/vendors">Vendors</label>
+        <label for="check"class="menu-item" matRipple routerLink="/home/paymentsources">Payment Sources</label>
+        <label for="check"class="menu-item" matRipple routerLink="/home/spending">Spending</label>
+    </div>
+</nav>

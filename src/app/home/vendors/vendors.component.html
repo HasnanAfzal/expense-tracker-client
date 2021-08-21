@@ -1,0 +1,30 @@
+<div class="vendors">
+    <div class="vendors-container">
+        <div class="vendors-title">
+            Vendors
+        </div>
+        <div class="vendors-create">
+            <button mat-flat-button color="accent" (click)="openAddEditVendorDialog()">Add Vendor</button>
+        </div>
+        <div class="vendors-section">
+            <div class="vendors-list" *ngFor="let vendor of vendors">
+                <div class="vendors-name">
+                    {{ vendor.name }}
+                    <div class="vendors-type">
+                        <span class="vendors-type-label">Type:</span> <span class="vendors-type-value"> {{ vendor.vendorType.name }}</span>
+                    </div>
+                </div>
+                <div class="vendors-actions">
+                    <button mat-icon-button color="accent" (click)="openAddEditVendorDialog(vendor)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button class="vendors-actions-delete">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template appPlaceHolder></ng-template>

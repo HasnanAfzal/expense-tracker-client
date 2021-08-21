@@ -1,0 +1,18 @@
+<div class="overlay" (click)="onOverlayClicked($event)"
+[@slideUpAnimation]="state"
+(@slideUpAnimation.done)="animationEnded($event)">
+    <div class="dialog" [ngStyle]="{height: height}">
+        <div class="dialog-header">
+            <div class="dialog-header-title">
+                {{ title }}
+            </div>
+            <button mat-icon-button (click)="state = 'close'">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </div>
+        <div class="dialog-body" (click)="onDialogClicked($event)">
+            <ng-template appInsertion> </ng-template>
+        </div>
+    </div>
+</div>
+  

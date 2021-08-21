@@ -1,0 +1,49 @@
+@import "../shared-styles";
+
+.register-container {
+    @extend %display-flex;
+    height: 100%;
+    width: 100%;
+    padding: 24px 0;
+
+    .register-section {
+        height: 100%;
+        width: 100%;
+        padding: 0 24px;
+        
+        &-title {
+            text-align: center;
+            font-size: 30px;
+            margin-top: 24px;
+        }
+    
+        &-welcome-message {
+            text-align: center;
+            color: $asbestos-color;
+            margin: 24px 0;
+        }
+
+        mat-form-field {
+            width: 100%;
+            margin-bottom: 12px;
+        }
+
+        .footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+    
+            .register-button {
+                flex: 1;
+                margin-right: 12px;
+            }
+            .nav-login {
+                color: $asbestos-color;
+                text-decoration-style: dashed;
+            }
+    
+        }
+    }
+
+}
