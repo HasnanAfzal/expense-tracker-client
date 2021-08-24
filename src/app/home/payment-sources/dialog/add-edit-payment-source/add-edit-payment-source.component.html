@@ -1,0 +1,22 @@
+<div class="add-payment-source">
+    <div class="add-payment-source-body">
+        <form [formGroup]="addEditPaymentSourceForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="fill">
+                <mat-label>Payment Source Name</mat-label>
+                <input matInput autocomplete="off" formControlName="name">
+                <mat-error *ngIf="addEditPaymentSourceForm.get('name')!.invalid">Please enter a valid payment source name</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Payment Source Type</mat-label>
+                <mat-select formControlName="paymentSourceType" [(ngModel)]="selectedPaymentSource">
+                  <mat-option *ngFor="let paymentSourceType of paymentSourceTypes" [value]="paymentSourceType._id">
+                    {{paymentSourceType.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </form>
+    </div>
+    <div class="add-payment-source-footer">
+        <button mat-flat-button color="accent" [disabled]="addEditPaymentSourceForm.invalid">{{ isEdit ? 'Update ' : 'Create' }} Payment Source</button>
+    </div>
+</div>

@@ -1,21 +1,9 @@
-import { animate, style, transition, trigger } from '@angular/animations';
 import { AfterViewInit, ChangeDetectorRef, Component, ComponentFactoryResolver, ComponentRef, OnDestroy, OnInit, Type, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
+import { slideUpAnimation } from '../shared-animations/slide-animation';
 import { DialogConfig } from './dialog-config';
 import { DialogRef } from './dialog-ref';
 import { InsertionDirective } from './insertion.directive';
-
-export const slideUpAnimation = trigger('slideUpAnimation', [
-  transition(':enter', [
-    style({ top: '100%' }), animate('300ms', style({ top: 0, }))]
-  ),
-  // transition(':leave',
-  //   [style({ top: 0 }), animate('300ms', style({ top: '120%' }))]
-  // ),
-  transition('* => close',
-    [style({ top: 0 }), animate('300ms', style({ top: '120%' }))]
-  )
-]);
 
 @Component({
   selector: 'app-dialog',
@@ -47,7 +35,10 @@ export class DialogComponent implements OnInit, AfterViewInit, OnDestroy {
     private cd: ChangeDetectorRef,
     private dialogRef: DialogRef,
     private config: DialogConfig) {
-    this.height = this.config.height || '';
+    // this.height = this.config.height || '';
+    if (this.config.size === 'LARGE') {
+      this.height = 'calc(100% - 48px)';
+    }
     this.title = this.config.title || this.title;
   }
 
@@ -91,7 +82,6 @@ export class DialogComponent implements OnInit, AfterViewInit, OnDestroy {
   animationEnded(event: any) {
     console.log(event);
     if (this.state === 'close' && event.toState === 'close') {
-      // console.log("called");
       this.dialogRef.closeAnimationFinished(this.result);
     }
   }

@@ -1,6 +1,4 @@
-<div class="add-vendor"
-  [@slideUpAnimation]="state"
-  (@slideUpAnimation.done)="animationEnded()">
+<div class="add-vendor">
     <div class="add-vendor-body">
         <form [formGroup]="addEditVendorForm" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="fill">
@@ -32,6 +30,6 @@
         </form>
     </div>
     <div class="add-vendor-footer">
-        <button mat-flat-button color="accent" (click)="state = 'close'" [disabled]="addEditVendorForm.invalid">Create Vendor</button>
+        <button mat-flat-button color="accent" [disabled]="addEditVendorForm.invalid">{{ isEditMode ? 'Update ' : 'Create' }} Vendor</button>
     </div>
 </div>

@@ -4,120 +4,34 @@
             Items
         </div>
         <div class="items-section">
-            <div class="items-lists-container">
-                <input type="checkbox" id="check1" class="checkbox" hidden>
-                <label for="check1" class="items-category">
+            <div class="items-lists-container" *ngFor="let category of categories; let i = index">
+                <input type="checkbox" [id]="'check' + category._id" class="checkbox" hidden [checked]="i === 0 ? true : false">
+                <label [for]="'check' + category._id" class="items-category">
                     <mat-icon class="expand-collapse-icon">keyboard_arrow_right</mat-icon>
                     <div class="items-category-name">
-                        Test
+                        {{ category.name }}
                     </div>
                 </label>
                 <div class="items-lists">
                     <div class="items-create">
-                        <form class="items-form">
+                        <form class="items-form" [formGroup]="createItemForms">
                             <mat-form-field appearance="fill">
                                 <mat-label>Item Name</mat-label>
-                                <input matInput autocomplete="off">
-                                <!-- <mat-error *ngIf="signupForm.get('name')!.invalid">Please enter a valid name</mat-error> -->
+                                <input matInput autocomplete="off" [formControlName]="category._id">
+                                <mat-error *ngIf="createItemForms.get(category._id)!.invalid">Please enter a valid item name</mat-error>
                             </mat-form-field>
-                                <button type="submit" mat-flat-button color="accent">Create</button>
+                                <button type="submit" mat-flat-button color="accent" [disabled]="createItemForms.get(category._id)!.invalid" >Create</button>
                         </form>
                     </div>
-                    <div class="items-list">
+                    <div class="items-list" *ngFor="let item of category.items">
                         <div class="items-list-name">
-                            Test
+                            {{ item.name }}
                         </div>
                         <div class="items-list-action">
-                            <button mat-icon-button color="accent">
+                            <button mat-icon-button color="accent" (click)="onEditClick(item)">
                                 <mat-icon>edit</mat-icon>
                             </button>
-                            <button mat-icon-button class="items-delete-icon">
-                                <mat-icon>delete</mat-icon>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="items-list">
-                        <div class="items-list-name">
-                            Test
-                        </div>
-                        <div class="items-list-action">
-                            <button mat-icon-button color="accent">
-                                <mat-icon>edit</mat-icon>
-                            </button>
-                            <button mat-icon-button class="items-delete-icon">
-                                <mat-icon>delete</mat-icon>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="items-list">
-                        <div class="items-list-name">
-                            Test
-                        </div>
-                        <div class="items-list-action">
-                            <button mat-icon-button color="accent">
-                                <mat-icon>edit</mat-icon>
-                            </button>
-                            <button mat-icon-button class="items-delete-icon">
-                                <mat-icon>delete</mat-icon>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="items-lists-container">
-                <input type="checkbox" id="check2" class="checkbox" hidden>
-                <label for="check2" class="items-category">
-                    <mat-icon class="expand-collapse-icon">keyboard_arrow_right</mat-icon>
-                    <div class="items-category-name">
-                        Test
-                    </div>
-                </label>
-                <div class="items-lists">
-                    <div class="items-create">
-                        <form class="items-form">
-                            <mat-form-field appearance="fill">
-                                <mat-label>Item Name</mat-label>
-                                <input matInput autocomplete="off">
-                                <!-- <mat-error *ngIf="signupForm.get('name')!.invalid">Please enter a valid name</mat-error> -->
-                            </mat-form-field>
-                                <button type="submit" mat-flat-button color="accent">Create</button>
-                        </form>
-                    </div>
-                    <div class="items-list">
-                        <div class="items-list-name">
-                            Test
-                        </div>
-                        <div class="items-list-action">
-                            <button mat-icon-button color="accent">
-                                <mat-icon>edit</mat-icon>
-                            </button>
-                            <button mat-icon-button class="items-delete-icon">
-                                <mat-icon>delete</mat-icon>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="items-list">
-                        <div class="items-list-name">
-                            Test
-                        </div>
-                        <div class="items-list-action">
-                            <button mat-icon-button color="accent">
-                                <mat-icon>edit</mat-icon>
-                            </button>
-                            <button mat-icon-button class="items-delete-icon">
-                                <mat-icon>delete</mat-icon>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="items-list">
-                        <div class="items-list-name">
-                            Test
-                        </div>
-                        <div class="items-list-action">
-                            <button mat-icon-button color="accent">
-                                <mat-icon>edit</mat-icon>
-                            </button>
-                            <button mat-icon-button class="items-delete-icon">
+                            <button mat-icon-button class="items-delete-icon" (click)="onDeleteClick(item)">
                                 <mat-icon>delete</mat-icon>
                             </button>
                         </div>

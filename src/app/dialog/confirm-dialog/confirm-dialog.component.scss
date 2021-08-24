@@ -3,23 +3,23 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 100%;
+    width: calc(100% - 48px);
     z-index: 4;
+    padding: 24px;
 }
 
-.dialog {
-    padding: 24px;
+.confirm-dialog {
     background-color: white;
     position: absolute;
-    bottom: 0;
+    padding: 12px;
+    bottom: 60px;
+    left: 12px;
     width: calc(100% - 48px);
+    border: 1px solid grey;
+    border-radius: 4px;
 
     &-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
         margin-bottom: 12px;
-
         &-title {
             font-size: 1.6em;
         }
@@ -28,6 +28,14 @@
 
     &-body {
         height: 100%;
+        margin-bottom: 12px;
+    }
+
+    &-footer {
+        text-align: end;
+        button {
+            margin-left: 12px;
+        }
     }
 
 }

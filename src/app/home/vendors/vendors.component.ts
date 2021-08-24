@@ -1,8 +1,9 @@
-import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ConfirmDialogService } from 'src/app/dialog/confirm-dialog/confirm-dialog.service';
 import { DialogService } from 'src/app/dialog/dialog.service';
 import { Vendor } from 'src/app/models/vendor.type';
-import { PlaceHolderDirective } from 'src/app/shared-directives/place-holder.directive';
 import { AddEditVendorComponent } from './dialog/add-vendor/add-edit-vendor.component';
+import { ViewVendorComponent } from './dialog/view-vendor/view-vendor.component';
 
 @Component({
   selector: 'app-vendors',
@@ -10,9 +11,8 @@ import { AddEditVendorComponent } from './dialog/add-vendor/add-edit-vendor.comp
   styleUrls: ['./vendors.component.scss']
 })
 export class VendorsComponent implements OnInit {
-  @ViewChild(PlaceHolderDirective, { static: true }) dialogHost!: PlaceHolderDirective;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private dialogService: DialogService) { }
+  constructor(private dialogService: DialogService, private confirmDialog: ConfirmDialogService) { }
 
   vendors: Array<Vendor> = [];
 
@@ -42,18 +42,19 @@ export class VendorsComponent implements OnInit {
         name: 'Hotel'
       }
     }];
+
   }
 
   openAddEditVendorDialog(vendor?: Vendor) {
 
     if (!vendor) {
       this.dialogService.open(AddEditVendorComponent, {
-        height: '100%',
+        size: 'LARGE',
         title: 'Add Vendor Details'
       });
     } else {
       this.dialogService.open(AddEditVendorComponent, {
-        height: '100%',
+        size: 'LARGE',
         title: 'Edit Vendor Details',
         data: {
           vendor
@@ -61,6 +62,28 @@ export class VendorsComponent implements OnInit {
       }); 
     }
 
+
+  }
+
+  viewVendorDetails(vendor: Vendor) {
+    this.dialogService.open(ViewVendorComponent, {
+      size: 'LARGE',
+      title: 'Vendor Details',
+      data: {
+        vendor
+      }
+    });
+  }
+
+  deleteVendor(vendor: Vendor) {
+    const confirmDialogRef = this.confirmDialog.open({
+      data: {
+        message: `Are you sure, you want to delete ${vendor.name} vendor?`
+      }
+    });
+
+    confirmDialogRef.afterClosed.subscribe((result: Boolean) => {
+    });
 
   }
 

@@ -1,0 +1,10 @@
+<div class="edit-item">
+    <form class="edit-item-form" [formGroup]="editItemForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill" class="edit-item-field">
+            <mat-label>Item Name</mat-label>
+            <input matInput formControlName="name" autocomplete="off">
+            <mat-error *ngIf="editItemForm.get('name')!.invalid">Please enter a valid item name</mat-error>
+          </mat-form-field>
+            <button type="submit" mat-flat-button color="accent" [disabled]="editItemForm.invalid">Edit</button>
+    </form>
+</div>

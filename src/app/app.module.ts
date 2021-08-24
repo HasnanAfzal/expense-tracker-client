@@ -19,8 +19,11 @@ import { PaymentSourcesComponent } from './home/payment-sources/payment-sources.
 import { MenuComponent } from './home/menu/menu.component';
 import { AddEditVendorComponent } from './home/vendors/dialog/add-vendor/add-edit-vendor.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
-import { PlaceHolderDirective } from './shared-directives/place-holder.directive';
 import { DialogModule } from './dialog/dialog.module';
+import { ViewVendorComponent } from './home/vendors/dialog/view-vendor/view-vendor.component';
+import { EditCategoryComponent } from './home/categories/dialog/edit-category/edit-category.component';
+import { EditItemComponent } from './home/items/dialog/edit-item/edit-item.component';
+import { AddEditPaymentSourceComponent } from './home/payment-sources/dialog/add-edit-payment-source/add-edit-payment-source.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,11 @@ import { DialogModule } from './dialog/dialog.module';
     MenuComponent,
     AddEditVendorComponent,
     DashboardComponent,
-    PlaceHolderDirective
+    ViewVendorComponent,
+    EditCategoryComponent,
+    EditItemComponent,
+    AddEditPaymentSourceComponent,
+    AddEditPaymentSourceComponent
   ],
   imports: [
     BrowserModule,

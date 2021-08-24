@@ -1,5 +1,5 @@
 export class DialogConfig<D = any> {
-    height?: string;
+    size?: string;
     title?: string;
     data?: D
 };

@@ -1,0 +1,30 @@
+.view-vendor {
+    height: calc(100% - 100px);
+    font-size: 1.2em;
+    
+    &-body {
+        height: 100%;
+        overflow: auto;
+
+        &-section {
+            margin-bottom: 16px;
+            // display: flex;
+            // flex-wrap: wrap;
+        }
+
+    }
+
+    &-footer {
+        text-align: end;
+    }
+
+    &-label {
+        font-weight: 300;
+        margin-right: 6px;
+    }
+
+    &-value {
+        font-weight: bold;
+    }
+
+}
