@@ -24,6 +24,10 @@ import { ViewVendorComponent } from './home/vendors/dialog/view-vendor/view-vend
 import { EditCategoryComponent } from './home/categories/dialog/edit-category/edit-category.component';
 import { EditItemComponent } from './home/items/dialog/edit-item/edit-item.component';
 import { AddEditPaymentSourceComponent } from './home/payment-sources/dialog/add-edit-payment-source/add-edit-payment-source.component';
+import { LabelsComponent } from './home/labels/labels.component';
+import { UnitsComponent } from './home/units/units.component';
+import { EditUnitComponent } from './home/units/dialog/edit-unit/edit-unit.component';
+import { EditLabelComponent } from './home/labels/dialog/edit-label/edit-label.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,11 @@ import { AddEditPaymentSourceComponent } from './home/payment-sources/dialog/add
     EditCategoryComponent,
     EditItemComponent,
     AddEditPaymentSourceComponent,
-    AddEditPaymentSourceComponent
+    AddEditPaymentSourceComponent,
+    LabelsComponent,
+    UnitsComponent,
+    EditUnitComponent,
+    EditLabelComponent
   ],
   imports: [
     BrowserModule,

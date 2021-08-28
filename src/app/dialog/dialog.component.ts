@@ -54,7 +54,6 @@ export class DialogComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // console.log(this.config.data.message);
     this.dialogRef.startCloseAnimation.subscribe((result: any) => {
       this.state = 'close';
       this.result = result;
@@ -80,7 +79,6 @@ export class DialogComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   animationEnded(event: any) {
-    console.log(event);
     if (this.state === 'close' && event.toState === 'close') {
       this.dialogRef.closeAnimationFinished(this.result);
     }

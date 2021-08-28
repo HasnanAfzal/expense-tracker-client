@@ -5,7 +5,7 @@
         position: fixed;
         top: 12px;
         right: 12px;
-        z-index: 3;
+        z-index: 4;
         transition: all 0.3s;
     
         .menu {
@@ -33,7 +33,7 @@
         width: 100%;
         transition: left 0.3s 0.1s;
         background-color: white;
-        z-index: 2;
+        z-index: 3;
 
         .header {
             text-align: center;

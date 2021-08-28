@@ -1,0 +1,10 @@
+<div class="edit-label">
+    <form class="edit-label-form" [formGroup]="editLabelForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill" class="edit-label-field">
+            <mat-label>Label</mat-label>
+            <input matInput formControlName="name" autocomplete="off">
+            <mat-error *ngIf="editLabelForm.get('name')!.invalid">Please enter a valid label</mat-error>
+          </mat-form-field>
+            <button type="submit" mat-flat-button color="accent">Edit</button>
+    </form>
+</div>

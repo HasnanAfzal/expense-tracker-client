@@ -1,0 +1,32 @@
+<div class="units">
+    <div class="units-container">
+        <div class="units-title">
+            Units
+        </div>
+        <div class="units-create-section">
+            <form class="units-form" [formGroup]="createUnitForm" (ngSubmit)="onSubmit">
+                <mat-form-field appearance="fill" class="units-create-field">
+                    <mat-label>Unit Name</mat-label>
+                    <input matInput formControlName="name" autocomplete="off">
+                    <mat-error *ngIf="createUnitForm.get('name')!.invalid">Please enter a valid unit name</mat-error>
+                  </mat-form-field>
+                    <button type="submit" mat-flat-button color="accent" [disabled]="createUnitForm.invalid">Create</button>
+                </form>
+        </div>
+        <div class="units-list-section">
+            <div class="units-list" *ngFor="let unit of units">
+                <div class="units-list-name">
+                    {{ unit.name }}
+                </div>
+                <div class="units-list-action">
+                    <button mat-icon-button color="accent" (click)="onEditClick(unit)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button class="units-delete-icon" (click)="onDeleteClick(unit)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

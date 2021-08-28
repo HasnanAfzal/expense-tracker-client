@@ -8,7 +8,7 @@
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Payment Source Type</mat-label>
-                <mat-select formControlName="paymentSourceType" [(ngModel)]="selectedPaymentSource">
+                <mat-select formControlName="paymentSourceType">
                   <mat-option *ngFor="let paymentSourceType of paymentSourceTypes" [value]="paymentSourceType._id">
                     {{paymentSourceType.name}}
                   </mat-option>

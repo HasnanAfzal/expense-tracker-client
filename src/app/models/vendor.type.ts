@@ -4,5 +4,6 @@ export interface Vendor {
     name: string;
     address?: string;
     website?: string;
-    vendorType: VendorType;
+    vendorType?: VendorType;
+    _id?: string
 }

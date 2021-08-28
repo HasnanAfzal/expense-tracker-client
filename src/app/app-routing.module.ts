@@ -4,8 +4,10 @@ import { CategoriesComponent } from './home/categories/categories.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { ItemsComponent } from './home/items/items.component';
+import { LabelsComponent } from './home/labels/labels.component';
 import { PaymentSourcesComponent } from './home/payment-sources/payment-sources.component';
 import { SpendingComponent } from './home/spending/spending.component';
+import { UnitsComponent } from './home/units/units.component';
 import { VendorsComponent } from './home/vendors/vendors.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -20,7 +22,9 @@ const routes: Routes = [
     { path: 'vendors', component: VendorsComponent },
     { path: 'paymentsources', component: PaymentSourcesComponent },
     { path: 'spending', component: SpendingComponent },
-    { path: 'dashboard', component: DashboardComponent }
+    { path: 'dashboard', component: DashboardComponent },
+    { path: 'units', component: UnitsComponent },
+    { path: 'labels', component: LabelsComponent }
   ], data: { animation: 'home' } }
 ];
 

@@ -1,0 +1,32 @@
+<div class="labels">
+    <div class="labels-container">
+        <div class="labels-title">
+            labels
+        </div>
+        <div class="labels-create-section">
+            <form class="labels-form" [formGroup]="createLabelForm" (ngSubmit)="onSubmit">
+                <mat-form-field appearance="fill" class="labels-create-field">
+                    <mat-label>Label</mat-label>
+                    <input matInput formControlName="name" autocomplete="off">
+                    <mat-error *ngIf="createLabelForm.get('name')!.invalid">Please enter a valid label</mat-error>
+                  </mat-form-field>
+                    <button type="submit" mat-flat-button color="accent">Create</button>
+                </form>
+        </div>
+        <div class="labels-list-section">
+            <div class="labels-list" *ngFor="let label of labels">
+                <div class="labels-list-name">
+                    {{ label.name }}
+                </div>
+                <div class="labels-list-action">
+                    <button mat-icon-button color="accent" (click)="onEditClick(label)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button class="labels-delete-icon" (click)="onDeleteClick(label)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

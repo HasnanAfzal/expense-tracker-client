@@ -25,10 +25,8 @@ export class AddEditPaymentSourceComponent implements OnInit {
     name: 'Borrowed'
   }];
 
-  selectedPaymentSource!: PaymentSourceType;
 
   constructor(private dialogConfig: DialogConfig) {
-    // debugger;
     this.isEdit = !!this.dialogConfig.data;
     if (this.isEdit) {
       const { paymentSource } = this.dialogConfig.data;
@@ -37,7 +35,6 @@ export class AddEditPaymentSourceComponent implements OnInit {
         paymentSourceType: paymentSource.paymentSourceType._id
       });
 
-      this.selectedPaymentSource = paymentSource.paymentSourceType._id;
 
     }
   }

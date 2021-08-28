@@ -1,0 +1,10 @@
+<div class="edit-unit">
+    <form class="edit-unit-form" [formGroup]="editUnitForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill" class="edit-unit-field">
+            <mat-label>unit Name</mat-label>
+            <input matInput formControlName="name" autocomplete="off">
+            <mat-error *ngIf="editUnitForm.get('name')!.invalid">Please enter a valid unit name</mat-error>
+          </mat-form-field>
+            <button type="submit" mat-flat-button color="accent">Edit</button>
+    </form>
+</div>

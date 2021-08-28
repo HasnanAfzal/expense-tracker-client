@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // console.log(this.loginForm);
     this.router.navigate(['/home', 'dashboard']);
   }
 

@@ -1,0 +1,75 @@
+@import '../../shared-styles.scss';
+
+.create-spending {
+
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    &-container {
+        padding: 18px;
+        height: 100%;
+        width: calc(100% - 32px);
+    }
+
+    &-body {
+        overflow: auto;
+        height: calc(100vh - 60px);
+    }
+
+    &-items-tabs {
+        border: 1px solid #bdc3c7;
+        border-radius: 4px;
+        margin-bottom: 12px;
+    }
+
+    &-header {
+        font-size: 1.8em;
+        font-weight: bold;
+        margin-bottom: 18px;
+    }
+
+    &-add-tab-button {
+        position: absolute;
+        left: 2px;
+        top: 3px;
+        color: black;
+    }
+
+    &-close-tab-button {
+        position: absolute;
+        right: -2px;
+        top: 15px;
+        color: red;
+        font-size: 18px;
+    }
+
+    &-item-tab-header {
+        margin-right: 16px;
+        width:50px
+    }
+
+    &-item-tab-title {
+        position: absolute;
+        left:12px;
+        top: 14px
+    }
+
+    &-item-tab-body {
+        padding-top: 16px;
+    }
+
+    &-footer {
+        text-align: right;
+    }
+
+
+}
+
+.right-align {
+    text-align: right;
+}
+
+mat-form-field {
+    width: 100%;
+}
