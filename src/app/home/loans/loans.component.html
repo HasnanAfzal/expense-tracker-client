@@ -1,0 +1,28 @@
+<div class="loans">
+    <div class="loans-header slide-up-text-animation">
+        <div>Loans</div>
+    </div>
+    <div class="loans-body">
+        <div class="loans-body-add-loan-section">
+            <button mat-flat-button color="accent">Add Loan</button>
+        </div>
+        <div class="loans-body-section">
+            <div class="loans-body-list" *ngFor="let loan of loans">
+                <div class="loans-body-list-name">
+                    {{ loan.name }}
+                </div>
+                <div class="loans-body-list-actions">
+                    <button mat-icon-button (click)="viewLoanDetails(loan)">
+                        <mat-icon>info</mat-icon>
+                    </button>
+                    <button mat-icon-button color="accent" (click)="openAddEditLoanDialog(loan)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button class="red-color" (click)="deleteLoan(loan)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+.add-recharge {
+    height: 100%;
+
+    &-body {
+        height: calc(100% - 98px);
+        overflow: auto;
+        margin-bottom: 12px;
+
+        mat-form-field {
+            width: 100%;
+        }
+
+    }
+
+    &-footer {
+        text-align: end;
+    }
+
+}

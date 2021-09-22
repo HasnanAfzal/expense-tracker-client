@@ -1,13 +1,13 @@
 <div class="overlay" (click)="onOverlayClicked($event)"
 [@slideUpAnimation]="state"
 (@slideUpAnimation.done)="animationEnded($event)">
-    <div class="confirm-dialog">
+    <div class="confirm-dialog" (click)="onDialogClicked($event)">
         <div class="confirm-dialog-header">
             <div class="confirm-dialog-header-title">
                 Confirm
             </div>
         </div>
-        <div class="confirm-dialog-body" (click)="onDialogClicked($event)">
+        <div class="confirm-dialog-body">
             {{ message }}
         </div>
         <div class="confirm-dialog-footer">

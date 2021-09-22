@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmDialogService } from 'src/app/dialog/confirm-dialog/confirm-dialog.service';
 import { DialogService } from 'src/app/dialog/dialog.service';
-import { PaymentSource } from 'src/app/models/payment-source.type';
-import { AddEditPaymentSourceComponent } from './dialog/add-edit-payment-source/add-edit-payment-source.component';
+import { FundSource } from 'src/app/models/fund-source.type';
+import { AddEditFundSourceComponent } from './dialog/add-edit-fund-source/add-edit-fund-source.component';
 
 @Component({
-  selector: 'app-payment-sources',
-  templateUrl: './payment-sources.component.html',
-  styleUrls: ['./payment-sources.component.scss']
+  selector: 'app-fund-sources',
+  templateUrl: './fund-sources.component.html',
+  styleUrls: ['./fund-sources.component.scss']
 })
-export class PaymentSourcesComponent implements OnInit {
+export class FundSourcesComponent implements OnInit {
 
-  paymentSources: Array<PaymentSource> = [];
+  fundSources: Array<FundSource> = [];
 
   constructor(private confirmDialog: ConfirmDialogService, private dialog: DialogService) { }
 
   ngOnInit(): void {
-    this.paymentSources.push({
+    this.fundSources.push({
       name: 'ICICI Credit Card',
       _id: '1',
-      paymentSourceType: {
+      fundSourceType: {
         _id: '2',
         name: 'Borrowed'
       }
@@ -27,7 +27,7 @@ export class PaymentSourcesComponent implements OnInit {
     {
       name: 'GPay',
       _id: '2',
-      paymentSourceType: {
+      fundSourceType: {
         _id: '1',
         name: 'Owned'
       }
@@ -35,32 +35,32 @@ export class PaymentSourcesComponent implements OnInit {
     {
       name: 'HDFC Credit Card',
       _id: '1',
-      paymentSourceType: {
+      fundSourceType: {
         _id: '1',
         name: 'Owned'
       }
     });
   }
 
-  deletePaymentSource(paymentSource: PaymentSource) {
+  deletePaymentSource(fundSource: FundSource) {
     this.confirmDialog.open({
       data: {
-        message: `Are you sure, you want to delete ${paymentSource.name} payment source?`
+        message: `Are you sure, you want to delete ${fundSource.name} payment source?`
       }
     });
   }
 
   openAddPaymentSource() {
-    this.dialog.open(AddEditPaymentSourceComponent, {
+    this.dialog.open(AddEditFundSourceComponent, {
       title: 'Add Payment Source'
     });
   }
 
-  openEditPaymentSource(paymentSource: PaymentSource) {
-    this.dialog.open(AddEditPaymentSourceComponent, {
+  openEditPaymentSource(fundSource: FundSource) {
+    this.dialog.open(AddEditFundSourceComponent, {
       title: 'Add Payment Source',
       data: {
-        paymentSource
+        fundSource
       }
     });
   }

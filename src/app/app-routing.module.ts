@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CategoriesComponent } from './home/categories/categories.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { ItemsComponent } from './home/items/items.component';
 import { LabelsComponent } from './home/labels/labels.component';
-import { PaymentSourcesComponent } from './home/payment-sources/payment-sources.component';
+import { LoansComponent } from './home/loans/loans.component';
+import { FundSourcesComponent } from './home/fund-sources/fund-sources.component';
+import { RechargesComponent } from './home/recharges/recharges.component';
 import { SpendingComponent } from './home/spending/spending.component';
 import { UnitsComponent } from './home/units/units.component';
 import { VendorsComponent } from './home/vendors/vendors.component';
@@ -17,14 +18,15 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, data: { animation: 'login' } },
   { path: 'register', component: RegisterComponent, data: { animation: 'register' } },
   { path: 'home', component: HomeComponent, children: [
-    { path: 'categories', component: CategoriesComponent },
     { path: 'items', component: ItemsComponent },
     { path: 'vendors', component: VendorsComponent },
-    { path: 'paymentsources', component: PaymentSourcesComponent },
+    { path: 'fundsources', component: FundSourcesComponent },
     { path: 'spending', component: SpendingComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'units', component: UnitsComponent },
-    { path: 'labels', component: LabelsComponent }
+    { path: 'labels', component: LabelsComponent },
+    { path: 'recharges', component: RechargesComponent },
+    { path: 'loans', component: LoansComponent }
   ], data: { animation: 'home' } }
 ];
 

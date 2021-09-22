@@ -1,0 +1,22 @@
+<div class="add-fund-source">
+    <div class="add-fund-source-body">
+        <form [formGroup]="addEditFundSourceForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="fill">
+                <mat-label>Fund Source Name</mat-label>
+                <input matInput autocomplete="off" formControlName="name">
+                <mat-error *ngIf="addEditFundSourceForm.get('name')!.invalid">Please enter a valid fund source name</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>fund Source Type</mat-label>
+                <mat-select formControlName="fundSourceType">
+                  <mat-option *ngFor="let fundSourceType of fundSourceTypes" [value]="fundSourceType._id">
+                    {{fundSourceType.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </form>
+    </div>
+    <div class="add-fund-source-footer">
+        <button mat-flat-button color="accent" [disabled]="addEditFundSourceForm.invalid">{{ isEdit ? 'Update ' : 'Create' }} Fund Source</button>
+    </div>
+</div>

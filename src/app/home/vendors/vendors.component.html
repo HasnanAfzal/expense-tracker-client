@@ -1,7 +1,7 @@
 <div class="vendors">
     <div class="vendors-container">
-        <div class="vendors-title">
-            Vendors
+        <div class="vendors-title slide-up-text-animation">
+            <div>Vendors</div>
         </div>
         <div class="vendors-create">
             <button mat-flat-button color="accent" (click)="openAddEditVendorDialog()">Add Vendor</button>
@@ -10,14 +10,11 @@
             <div class="vendors-list" *ngFor="let vendor of vendors">
                 <div class="vendors-name">
                     {{ vendor.name }}
-                    <div class="vendors-type">
-                        <span class="vendors-type-label">Type:</span> <span class="vendors-type-value"> {{ vendor.vendorType!.name }}</span>
-                    </div>
                 </div>
                 <div class="vendors-actions">
-                    <button mat-icon-button class="vendors-actions-info" (click)="viewVendorDetails(vendor)">
+                    <!-- <button mat-icon-button class="vendors-actions-info" (click)="viewVendorDetails(vendor)">
                         <mat-icon>info</mat-icon>
-                    </button>
+                    </button> -->
                     <button mat-icon-button color="accent" (click)="openAddEditVendorDialog(vendor)">
                         <mat-icon>edit</mat-icon>
                     </button>

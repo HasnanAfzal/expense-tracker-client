@@ -1,41 +1,32 @@
 <div class="items">
     <div class="items-container">
-        <div class="items-title">
-            Items
+        <div class="items-title slide-up-text-animation">
+            <div>
+                Items
+            </div>
         </div>
-        <div class="items-section">
-            <div class="items-lists-container" *ngFor="let category of categories; let i = index">
-                <input type="checkbox" [id]="'check' + category._id" class="checkbox" hidden [checked]="i === 0 ? true : false">
-                <label [for]="'check' + category._id" class="items-category">
-                    <mat-icon class="expand-collapse-icon">keyboard_arrow_right</mat-icon>
-                    <div class="items-category-name">
-                        {{ category.name }}
-                    </div>
-                </label>
-                <div class="items-lists">
-                    <div class="items-create">
-                        <form class="items-form" [formGroup]="createItemForms">
-                            <mat-form-field appearance="fill">
-                                <mat-label>Item Name</mat-label>
-                                <input matInput autocomplete="off" [formControlName]="category._id">
-                                <mat-error *ngIf="createItemForms.get(category._id)!.invalid">Please enter a valid item name</mat-error>
-                            </mat-form-field>
-                                <button type="submit" mat-flat-button color="accent" [disabled]="createItemForms.get(category._id)!.invalid" >Create</button>
-                        </form>
-                    </div>
-                    <div class="items-list" *ngFor="let item of category.items">
-                        <div class="items-list-name">
-                            {{ item.name }}
-                        </div>
-                        <div class="items-list-action">
-                            <button mat-icon-button color="accent" (click)="onEditClick(item)">
-                                <mat-icon>edit</mat-icon>
-                            </button>
-                            <button mat-icon-button class="items-delete-icon" (click)="onDeleteClick(item)">
-                                <mat-icon>delete</mat-icon>
-                            </button>
-                        </div>
-                    </div>
+        <div class="items-create-section">
+            <form class="items-form" [formGroup]="createItemForm" (ngSubmit)="onSubmit">
+                <mat-form-field appearance="fill" class="items-create-field">
+                    <mat-label>Item Name</mat-label>
+                    <input matInput formControlName="name" autocomplete="off">
+                    <mat-error *ngIf="createItemForm.get('name')!.invalid">Please enter a valid item name</mat-error>
+                  </mat-form-field>
+                    <button type="submit" mat-flat-button color="accent" [disabled]="createItemForm.invalid">Create</button>
+                </form>
+        </div>
+        <div class="items-list-section">
+            <div class="items-list" *ngFor="let item of items">
+                <div class="items-list-name">
+                    {{ item.name }}
+                </div>
+                <div class="items-list-action">
+                    <button mat-icon-button color="accent" (click)="onEditClick(item)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button class="items-delete-icon" (click)="onDeleteClick(item)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
                 </div>
             </div>
         </div>

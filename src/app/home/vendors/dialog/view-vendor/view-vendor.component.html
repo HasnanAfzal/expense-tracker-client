@@ -8,16 +8,6 @@
             <div class="view-vendor-label">Vendor Adresss:</div>
             <div class="view-vendor-value">{{ vendor.address }}</div>
         </div>
-        <div class="view-vendor-body-section">
-            <div class="view-vendor-label">Website:</div>
-            <div class="view-vendor-value">
-                <a href="http://amazon.in" target="_blank">{{ vendor.website }}</a>
-            </div>
-        </div>
-        <div class="view-vendor-body-section">
-            <div class="view-vendor-label">Vendor Type:</div>
-            <div class="view-vendor-value">{{ vendor.vendorType!.name }}</div>
-        </div>
     </div>
     <div class="view-vendor-footer">
         <button mat-flat-button color="accent" (click)="closeDialog()">Close</button>

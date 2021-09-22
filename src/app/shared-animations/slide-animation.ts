@@ -12,6 +12,18 @@ export const slideUpAnimation = trigger('slideUpAnimation', [
   )
 ]);
 
+export const slideDownAnimation = trigger('slideUpAnimation', [
+  transition(':enter', [
+    style({ top: '-100%' }), animate('300ms', style({ top: 0, }))]
+  ),
+  transition(':leave',
+    [style({ top: 0 }), animate('300ms', style({ top: '-120%' }))]
+  ),
+  transition('* => close',
+    [style({ top: 0 }), animate('300ms', style({ top: '-120%' }))]
+  )
+]);
+
 const slideRightAnimation = [
   query(':enter, :leave', [
     style({

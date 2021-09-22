@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {  FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConfirmDialogService } from 'src/app/dialog/confirm-dialog/confirm-dialog.service';
 import { DialogService } from 'src/app/dialog/dialog.service';
-import { Category } from 'src/app/models/category.type';
 import { Item } from 'src/app/models/Item.type';
 import { EditItemComponent } from './dialog/edit-item/edit-item.component';
 
@@ -13,54 +12,41 @@ import { EditItemComponent } from './dialog/edit-item/edit-item.component';
 })
 export class ItemsComponent implements OnInit {
 
-  categories!: Array<Category>;
+  items!: Array<Item>;
 
-  createItemForms!: FormGroup;
+  createItemForm: FormGroup = new FormGroup({
+    'name': new FormControl(null, Validators.required)
+  });
 
   constructor(private formBuilder: FormBuilder,
     private confirmDialog: ConfirmDialogService,
     private dialog: DialogService) { }
 
   ngOnInit(): void {
-    this.categories = [{
+    this.items = [{
       _id: '1',
-      name: 'Fruits',
-      items: [{
-        _id: '1',
-        name: 'Apple'
-      },
-      {
-        _id: '2',
-        name: 'PineApple'
-      },
-      {
-        _id: '3',
-        name: 'Mango'
-      }]
+      name: 'Apple'
     },
     {
       _id: '2',
-      name: 'Groceries',
-      items: [{
-        _id: '1',
-        name: 'Vim'
-      },
-      {
-        _id: '2',
-        name: 'Surf Excel'
-      },
-      {
-        _id: '3',
-        name: 'Rice'
-      }]
+      name: 'PineApple'
+    },
+    {
+      _id: '3',
+      name: 'Mango'
+    },
+    {
+      _id: '4',
+      name: 'Vim'
+    },
+    {
+      _id: '5',
+      name: 'Surf Excel'
+    },
+    {
+      _id: '6',
+      name: 'Rice'
     }];
-
-    const createCategoryFormGroup: { [key: string]: FormControl } = {};
-    this.categories.map(c => {
-      createCategoryFormGroup[c._id] = new FormControl(null, Validators.required);
-    });
-
-    this.createItemForms = this.formBuilder.group(createCategoryFormGroup);
 
   }
 
@@ -79,6 +65,10 @@ export class ItemsComponent implements OnInit {
       },
       title: 'Edit Item Details'
     });
+  }
+
+  onSubmit(): void {
+    
   }
 
 }

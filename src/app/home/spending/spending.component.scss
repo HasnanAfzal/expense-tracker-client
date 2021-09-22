@@ -6,6 +6,31 @@
     height: 100%;
     width: 100%;
 
+    &-header {
+        padding: 4px 0;
+        overflow: hidden;
+        &-title {
+            animation: move-up 0.3s linear 0.3s 1 forwards;
+            position: relative;
+            top: 32px;
+        }
+    }
+
+    @keyframes move-up {
+        0% {
+            top: 32px;
+        }
+        50% {
+            top: 16px
+        }
+        75% {
+            top: 8px;
+        }
+        100% {
+            top: 0;
+        }
+    }
+
     &-container {
         padding: 18px;
         height: 100%;
@@ -60,9 +85,28 @@
     }
 
     &-footer {
-        text-align: right;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 12px;
     }
 
+    &-emi-section {
+        border: 1px solid #bdc3c7;
+        margin-top: 12px;
+        padding-top: 18px;
+        margin-bottom: 18px;
+        position: relative;
+
+        &::before {
+            content: 'EMI';
+            position: absolute;
+            top: -10px;
+            left: 12px;
+            background: white;
+            letter-spacing: 1px;
+        }
+    }
 
 }
 

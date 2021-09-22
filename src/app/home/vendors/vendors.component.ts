@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConfirmDialogService } from 'src/app/dialog/confirm-dialog/confirm-dialog.service';
 import { DialogService } from 'src/app/dialog/dialog.service';
 import { Vendor } from 'src/app/models/vendor.type';
@@ -14,33 +15,28 @@ export class VendorsComponent implements OnInit {
 
   constructor(private dialogService: DialogService, private confirmDialog: ConfirmDialogService) { }
 
+  createVendorForm = new FormGroup({
+    'name': new FormControl(null, Validators.required)
+  })
+
   vendors: Array<Vendor> = [];
+
+  onSubmit(): void {
+    
+  }
 
   ngOnInit(): void {
     this.vendors = [{
       name: 'Amazon',
-      vendorType: {
-        _id: '1',
-        name: 'Online'
-      },
-      address: '',
-      website: ''
+      address: 'Amazo.in'
     },
     {
       name: 'Flipkart',
-      vendorType: {
-        _id: '2',
-        name: 'Online'
-      },
-      address: '',
-      website: ''
+      address: 'Flipkart.in'
     },
     {
       name: 'Vishnu Garden',
-      vendorType: {
-        _id: '3',
-        name: 'Hotel'
-      }
+      address: 'R T Nagar Main Road'
     }];
 
   }
@@ -49,12 +45,10 @@ export class VendorsComponent implements OnInit {
 
     if (!vendor) {
       this.dialogService.open(AddEditVendorComponent, {
-        size: 'LARGE',
         title: 'Add Vendor Details'
       });
     } else {
       this.dialogService.open(AddEditVendorComponent, {
-        size: 'LARGE',
         title: 'Edit Vendor Details',
         data: {
           vendor

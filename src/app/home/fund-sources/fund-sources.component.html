@@ -1,0 +1,28 @@
+<div class="fund-sources">
+    <div class="fund-sources-container">
+        <div class="fund-sources-title slide-up-text-animation">
+            <div>Fund Sources</div>
+        </div>
+        <div class="fund-sources-create">
+            <button mat-flat-button color="accent" (click)="openAddPaymentSource()">Add Fund Source</button>
+        </div>
+        <div class="fund-sources-section">
+            <div class="fund-sources-list" *ngFor="let fundSource of fundSources">
+                <div class="fund-sources-name">
+                    {{ fundSource.name }}
+                    <div class="fund-sources-type">
+                        <span class="fund-sources-type-label">Type:</span> <span class="fund-sources-type-value"> {{ fundSource.fundSourceType.name }}</span>
+                    </div>
+                </div>
+                <div class="fund-sources-actions">
+                    <button mat-icon-button color="accent" (click)="openEditPaymentSource(fundSource)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button class="fund-sources-actions-delete" (click)="deletePaymentSource(fundSource)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

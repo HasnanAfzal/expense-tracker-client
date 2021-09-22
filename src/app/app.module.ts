@@ -11,23 +11,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material-module';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
-import { CategoriesComponent } from './home/categories/categories.component';
 import { ItemsComponent } from './home/items/items.component';
 import { SpendingComponent } from './home/spending/spending.component';
 import { VendorsComponent } from './home/vendors/vendors.component';
-import { PaymentSourcesComponent } from './home/payment-sources/payment-sources.component';
+import { FundSourcesComponent } from './home/fund-sources/fund-sources.component';
 import { MenuComponent } from './home/menu/menu.component';
 import { AddEditVendorComponent } from './home/vendors/dialog/add-vendor/add-edit-vendor.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { DialogModule } from './dialog/dialog.module';
 import { ViewVendorComponent } from './home/vendors/dialog/view-vendor/view-vendor.component';
-import { EditCategoryComponent } from './home/categories/dialog/edit-category/edit-category.component';
 import { EditItemComponent } from './home/items/dialog/edit-item/edit-item.component';
-import { AddEditPaymentSourceComponent } from './home/payment-sources/dialog/add-edit-payment-source/add-edit-payment-source.component';
+import { AddEditFundSourceComponent } from './home/fund-sources/dialog/add-edit-fund-source/add-edit-fund-source.component';
 import { LabelsComponent } from './home/labels/labels.component';
 import { UnitsComponent } from './home/units/units.component';
 import { EditUnitComponent } from './home/units/dialog/edit-unit/edit-unit.component';
 import { EditLabelComponent } from './home/labels/dialog/edit-label/edit-label.component';
+import { RechargesComponent } from './home/recharges/recharges.component';
+import { LoansComponent } from './home/loans/loans.component';
+import { AddEditRechargeComponent } from './home/recharges/dialog/add-edit-recharge/add-edit-recharge.component';
 
 @NgModule({
   declarations: [
@@ -35,23 +36,23 @@ import { EditLabelComponent } from './home/labels/dialog/edit-label/edit-label.c
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    CategoriesComponent,
     ItemsComponent,
     SpendingComponent,
-    PaymentSourcesComponent,
+    FundSourcesComponent,
     VendorsComponent,
     MenuComponent,
     AddEditVendorComponent,
     DashboardComponent,
     ViewVendorComponent,
-    EditCategoryComponent,
     EditItemComponent,
-    AddEditPaymentSourceComponent,
-    AddEditPaymentSourceComponent,
+    AddEditFundSourceComponent,
     LabelsComponent,
     UnitsComponent,
     EditUnitComponent,
-    EditLabelComponent
+    EditLabelComponent,
+    RechargesComponent,
+    LoansComponent,
+    AddEditRechargeComponent
   ],
   imports: [
     BrowserModule,

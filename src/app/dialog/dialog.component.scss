@@ -5,14 +5,16 @@
     height: 100%;
     width: 100%;
     z-index: 4;
+    background: rgb(255, 255, 255, 0.8);
 }
 
 .dialog {
-    padding: 24px;
+    padding: 16px 24px;
     background-color: white;
     position: absolute;
     bottom: 0;
     width: calc(100% - 48px);
+    
 
     &-header {
         display: flex;
@@ -30,4 +32,10 @@
         height: 100%;
     }
 
+}
+
+.small-dialog {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0px 0px 2px 0px black;
 }

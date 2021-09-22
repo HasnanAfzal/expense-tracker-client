@@ -1,0 +1,36 @@
+@import '../../shared-styles.scss';
+
+.loans {
+    padding: 18px;
+    &-header {
+        font-size: 1.8em;
+        font-weight: bold;
+        margin-bottom: 18px;
+    }
+
+    &-body {
+        overflow: auto;
+        &-add-loan-section {
+            text-align: right;
+            margin-bottom: 18px;
+        }
+
+        &-list {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid black;
+
+            &-name {
+                font-size: 1.2em;
+            }
+
+        }
+
+    }
+
+}
+
+.red-color {
+    color: red;
+}

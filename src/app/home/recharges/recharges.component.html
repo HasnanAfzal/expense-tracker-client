@@ -1,0 +1,29 @@
+<div class="recharges">
+    <div class="recharges-container">
+        <div class="recharges-title slide-up-text-animation">
+            <div>Recharges</div>
+        </div>
+        <div class="recharges-body">
+            <div class="recharges-body-create">
+              <button type="submit" mat-flat-button color="accent" (click)="onAddEditRechargeClick()">Add Recharge</button>
+            </div>
+            <div class="recharges-body-section">
+              <div class="recharges-body-list" *ngFor="let recharge of recharges">
+                <div class="recharges-body-list-details">
+                  <div>{{ recharge.name }}</div>
+                  <div>{{ recharge.accountId }} <span class="label">Amount: </span> <span>{{ recharge.amount }}</span> </div>
+                  <div><span class="label">Expires on: </span> <span> {{ recharge.renewalDate | date }} </span> </div>
+                </div>
+                <div class="recharges-body-list-action">
+                  <button mat-icon-button color="accent" (click)="onAddEditRechargeClick(recharge)">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-icon-button class="fund-sources-actions-delete" (click)="onDeleteRechargeClick(recharge)">
+                      <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>

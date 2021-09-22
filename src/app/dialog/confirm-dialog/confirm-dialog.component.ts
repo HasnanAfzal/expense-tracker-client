@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { slideUpAnimation } from 'src/app/shared-animations/slide-animation';
+import { slideDownAnimation } from 'src/app/shared-animations/slide-animation';
 import { DialogConfig } from '../dialog-config';
 import { DialogRef } from '../dialog-ref';
 
@@ -8,7 +8,7 @@ import { DialogRef } from '../dialog-ref';
   templateUrl: './confirm-dialog.component.html',
   styleUrls: ['./confirm-dialog.component.scss'],
   animations: [
-    slideUpAnimation
+    slideDownAnimation
   ]
 })
 export class ConfirmDialogComponent {

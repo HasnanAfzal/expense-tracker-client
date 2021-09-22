@@ -10,23 +10,6 @@
                 <mat-label>Vendor Address</mat-label>
                 <textarea matInput formControlName="address"></textarea>
               </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Website</mat-label>
-                <input matInput autocomplete="off" formControlName="website">
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Vendor Type</mat-label>
-                <input type="text"
-                       aria-label="Vendor Type"
-                       matInput
-                       [matAutocomplete]="auto"
-                       formControlName="vendorType">
-                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayProperty">
-                  <mat-option *ngFor="let vendorType of filteredVendorTypes" [value]="vendorType">
-                    {{ vendorType.name }}
-                  </mat-option>
-                </mat-autocomplete>
-              </mat-form-field>
         </form>
     </div>
     <div class="add-vendor-footer">

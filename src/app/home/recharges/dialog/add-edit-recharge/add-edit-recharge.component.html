@@ -1,0 +1,74 @@
+<form [formGroup]="createRechargeForm" class="add-recharge">
+
+    <div class="add-recharge-body">
+        <mat-form-field appearance="fill">
+            <mat-label>Payment Date</mat-label>
+            <input matInput [matDatepicker]="paymentDatePicker" required formControlName="paymentDate">
+            <mat-datepicker-toggle matSuffix [for]="paymentDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #paymentDatePicker></mat-datepicker>
+            <mat-error *ngIf="createRechargeForm.get('paymentDate')!.invalid">Please select date of payment</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Vendor</mat-label>
+            <input type="text" matInput [matAutocomplete]="autoVendors" formControlName="vendor" required>
+            <mat-autocomplete #autoVendors="matAutocomplete" [displayWith]="displayProperty">
+            <mat-option *ngFor="let vendor of filteredVendors" [value]="vendor">
+                {{ vendor.name }}
+            </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="createRechargeForm.get('vendor')!.invalid">Please select a vendor.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Labels</mat-label>
+            <mat-select formControlName="labels" multiple>
+            <mat-option *ngFor="let label of labels" [value]="label._id">{{label.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Account ID</mat-label>
+            <input matInput type="text" formControlName="accountId">
+            <mat-error *ngIf="createRechargeForm.get('accountId')!.invalid">Please enter account id.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Recharge Name</mat-label>
+            <input matInput type="text" formControlName="rechargeName" autocomplete="off">
+            <mat-error *ngIf="createRechargeForm.get('rechargeName')!.invalid">Please enter recharge name.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Expires after</mat-label>
+            <input matInput type="number" formControlName="expiresAfter" autocomplete="off">
+            <span matSuffix>Days</span>
+            <mat-error *ngIf="createRechargeForm.get('expiresAfter')!.invalid">Please enter days after which this recharge will expire.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Renewal Date</mat-label>
+            <input matInput [matDatepicker]="renewalDatePicker" required formControlName="renewalDate">
+            <mat-datepicker-toggle matSuffix [for]="renewalDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #renewalDatePicker></mat-datepicker>
+            <mat-error *ngIf="createRechargeForm.get('renewalDate')!.invalid">Please select date on which this recharge should be renewed.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Fund Source</mat-label>
+            <input type="text" matInput [matAutocomplete]="fundSources" formControlName="fundSource" required>
+            <mat-autocomplete #fundSources="matAutocomplete" [displayWith]="displayProperty">
+            <mat-option *ngFor="let fundSource of filteredFundSources" [value]="fundSource">
+                {{ fundSource.name }}
+            </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="createRechargeForm.get('fundSource')!.invalid">Please select a fund source</mat-error>
+        </mat-form-field>
+    </div>
+
+
+    <div class="add-recharge-footer">
+        <button type="submit" mat-flat-button color="accent">{{ editMode ? 'Edit' : 'Create' }} Recharge</button>
+    </div>
+
+</form>

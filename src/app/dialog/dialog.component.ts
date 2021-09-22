@@ -37,7 +37,7 @@ export class DialogComponent implements OnInit, AfterViewInit, OnDestroy {
     private config: DialogConfig) {
     // this.height = this.config.height || '';
     if (this.config.size === 'LARGE') {
-      this.height = 'calc(100% - 48px)';
+      this.height = 'calc(100% - 32px)';
     }
     this.title = this.config.title || this.title;
   }
