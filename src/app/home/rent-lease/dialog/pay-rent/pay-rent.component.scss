@@ -1,0 +1,53 @@
+.pay-rent {
+    &-header {
+
+        position: relative;
+        padding: 16px 12px;
+        margin-bottom: 12px;
+        border: 1px solid grey;
+        border-radius: 4px;
+
+        &-title {
+            position: absolute;
+            top: -14px;
+            left: 12px;
+            background: white;
+        }
+
+        .mat-form-field {
+            width: 100%;
+        }
+
+        .right-align {
+            text-align: end;
+        }
+
+        &-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &-button {
+                flex-shrink: 0;
+            }
+
+        }
+
+    }
+
+    &-body {
+        &-list {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            border-bottom: 1px solid grey;
+            font-size: 1.2em;
+
+            .red-color {
+                color: red;
+            }
+
+        }
+    }
+}

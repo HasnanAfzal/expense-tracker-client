@@ -29,6 +29,13 @@ import { EditLabelComponent } from './home/labels/dialog/edit-label/edit-label.c
 import { RechargesComponent } from './home/recharges/recharges.component';
 import { LoansComponent } from './home/loans/loans.component';
 import { AddEditRechargeComponent } from './home/recharges/dialog/add-edit-recharge/add-edit-recharge.component';
+import { AddEditLoanComponent } from './home/loans/dialog/add-edit-loan/add-edit-loan.component';
+import { PayEmiComponent } from './home/loans/dialog/pay-emi/pay-emi.component';
+import { AddFieldComponent } from './shared-components/add-field/add-field.component';
+import { AddFieldNameComponent } from './shared-components/add-field/dialog/add-field-name/add-field-name.component';
+import { RentLeaseComponent } from './home/rent-lease/rent-lease.component';
+import { AddEditBuildingComponent } from './home/rent-lease/dialog/add-edit-building/add-edit-building.component';
+import { PayRentComponent } from './home/rent-lease/dialog/pay-rent/pay-rent.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +59,14 @@ import { AddEditRechargeComponent } from './home/recharges/dialog/add-edit-recha
     EditLabelComponent,
     RechargesComponent,
     LoansComponent,
-    AddEditRechargeComponent
+    AddEditRechargeComponent,
+    AddEditLoanComponent,
+    PayEmiComponent,
+    AddFieldComponent,
+    AddFieldNameComponent,
+    RentLeaseComponent,
+    AddEditBuildingComponent,
+    PayRentComponent
   ],
   imports: [
     BrowserModule,

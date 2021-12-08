@@ -1,0 +1,80 @@
+<div class="pay-emi">
+    <div class="pay-emi-header">
+        <h3 class="pay-emi-header-title">Glanza Loan</h3>
+        <form [formGroup]="createPayedEmiForm" (submit)="onSubmit()">
+            <div formGroupName="payEMI" *ngIf="!closingTheLoan">
+                <mat-form-field appearance="fill">
+                    <mat-label>EMI Month</mat-label>
+                    <input matInput [matDatepicker]="dp" required formControlName="emiMonth" autocomplete="off">
+                    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                    <mat-datepicker #dp
+                                    startView="year"
+                                    (monthSelected)="chosenMonthHandler($event, dp)"
+                                    panelClass="example-month-picker">
+                    </mat-datepicker>
+                    <mat-error *ngIf="createPayedEmiForm.get('payEMI.emiMonth')?.invalid">Please select emi month</mat-error>
+                  </mat-form-field>
+                <mat-form-field appearance="fill" floatLabel="always">
+                    <mat-label>EMI Amount</mat-label>
+                    <input matInput type="number" class="right-align" placeholder="0" required formControlName="emiAmount" autocomplete="off">
+                    <span matPrefix>$&nbsp;</span>
+                    <mat-error *ngIf="createPayedEmiForm.get('payEMI.emiAmount')?.invalid">Please enter emi amount</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" floatLabel="always">
+                    <mat-label>Interest Amount Charged</mat-label>
+                    <input matInput type="number" class="right-align" placeholder="0" formControlName="interestAmountCharged" autocomplete="off">
+                    <span matPrefix>$&nbsp;</span>
+                  </mat-form-field>
+            </div>
+            
+            <div formGroupName="closingLoan" *ngIf="closingTheLoan">
+                <mat-form-field appearance="fill">
+                    <mat-label>Loan Closing Date</mat-label>
+                    <input matInput [matDatepicker]="loanClosingDatePicker" required formControlName="loanClosingDate">
+                    <mat-datepicker-toggle matSuffix [for]="loanClosingDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #loanClosingDatePicker></mat-datepicker>
+                    <mat-error *ngIf="createPayedEmiForm.get('closingLoan.loanClosingDate')?.invalid">Please select loan closing date</mat-error>
+                  </mat-form-field>
+
+                <mat-form-field appearance="fill" floatLabel="always">
+                    <mat-label>Remaining Amount Paid</mat-label>
+                    <input matInput type="number" class="right-align" placeholder="0" required formControlName="remainingAmountPaid" autocomplete="off">
+                    <span matPrefix>$&nbsp;</span>
+                    <mat-error *ngIf="createPayedEmiForm.get('closingLoan.remainingAmountPaid')?.invalid">Please enter interest amount paid</mat-error>
+                </mat-form-field>
+
+                <div formGroupName="additionalInfo">
+                    <mat-form-field appearance="fill" floatLabel="always" *ngFor="let additionalFieldName of additionalFieldNames">
+                        <mat-label>{{ additionalFieldName }}</mat-label>
+                        <input matInput type="number" class="right-align" placeholder="0" [formControlName]="additionalFieldName" autocomplete="off">
+                        <span matPrefix>$&nbsp;</span>
+                    </mat-form-field>
+                </div>
+
+            </div>
+
+            <div class="pay-emi-header-footer">
+                <div>
+                    <app-add-field *ngIf="closingTheLoan" (newFieldCreated)="onNewFieldCreated($event)"></app-add-field>
+                    <mat-checkbox (change)="onClosngThisLoanEarlyChange()">
+                        Closing this loan early
+                    </mat-checkbox>
+                </div>
+                  <button type="submit" mat-flat-button color="accent" class="pay-emi-header-footer-button">Pay EMI</button>
+            </div>
+
+        </form>
+    </div>
+    <div class="pay-emi-body">
+        <div class="pay-emi-body-list" *ngFor="let payedEMI of payedEMIs">
+            <div class="pay-emi-body-list-details">
+                {{ payedEMI.emiMonth | date:'MMM YYYY' }} - {{ payedEMI.emiAmount }}
+            </div>
+            <div class="pay-emi-body-list-actions">
+                <button mat-icon-button class="red-color" (click)="onDeletePayedEMIClick(payedEMI)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

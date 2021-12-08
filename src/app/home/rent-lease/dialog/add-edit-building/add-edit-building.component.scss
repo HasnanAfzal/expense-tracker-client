@@ -1,0 +1,23 @@
+.add-edit-building {
+    height: 100%;
+    
+    &-body {
+
+        overflow: auto;
+        height: calc(100% - 95px);
+
+        .mat-form-field {
+            width: 100%;
+        }
+
+        .mat-radio-button {
+            width: 50%;
+            margin-bottom: 12px;
+        }
+    }
+
+    &-footer {
+        text-align: end;
+    }
+
+}

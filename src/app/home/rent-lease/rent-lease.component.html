@@ -1,0 +1,30 @@
+<div class="rent-lease">
+    <div class="rent-lease-header">
+        <div class="rent-lease-header-title slide-up-text-animation">
+            <div>Rent / Lease</div>
+        </div>
+    </div>
+    <div class="rent-lease-body">
+        <div class="rent-lease-body-create">
+            <button mat-flat-button color="accent" (click)="onAddEditBuildingClick()">Add Building</button>
+        </div>
+        <div class="rent-lease-body-lists">
+            <div class="rent-lease-body-list" *ngFor="let building of buildings">
+                <div class="rent-lease-body-list-details">
+                    {{ building.name }}
+                </div>
+                <div class="rent-lease-body-list-actions">
+                    <button mat-icon-button color="accent" (click)="onPayRentClick(building)">
+                        <mat-icon>payment</mat-icon>
+                    </button>
+                    <button mat-icon-button color="accent" (click)="onAddEditBuildingClick(building)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button class="red-color" (click)="onDeleteBuildingClick(building)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

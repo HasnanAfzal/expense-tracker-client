@@ -17,7 +17,7 @@ import { DialogModule } from './dialog.module';
   providedIn: DialogModule,
 })
 export class DialogService {
-  dialogComponentRef!: ComponentRef<DialogComponent>;
+  dialogComponentRefs: Array<ComponentRef<DialogComponent>> = [];
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -51,7 +51,7 @@ export class DialogService {
     document.body.appendChild(domElem);
 
     // assign the componentRef to our property.
-    this.dialogComponentRef = componentRef;
+    this.dialogComponentRefs.push(componentRef);
 
     dialogRef.afterClosed.subscribe(() => {
       this.removeDialogComponentFromBody();
@@ -63,14 +63,15 @@ export class DialogService {
   }
 
   private removeDialogComponentFromBody() {
-    this.appRef.detachView(this.dialogComponentRef!.hostView);
-    this.dialogComponentRef!.destroy();
+    this.appRef.detachView(this.dialogComponentRefs[this.dialogComponentRefs.length - 1]!.hostView);
+    this.dialogComponentRefs[this.dialogComponentRefs.length - 1]!.destroy();
+    this.dialogComponentRefs.splice(this.dialogComponentRefs.length - 1, 1);
   }
 
   public open(componentType: Type<any>, config: DialogConfig): DialogRef {
     const dialogRef = this.appendDialogComponentToBody(config);
 
-    this.dialogComponentRef.instance.childComponentType = componentType;
+    this.dialogComponentRefs[this.dialogComponentRefs.length - 1].instance.childComponentType = componentType;
 
 
     return dialogRef;

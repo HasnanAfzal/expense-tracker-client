@@ -43,11 +43,7 @@ export class FundSourcesComponent implements OnInit {
   }
 
   deletePaymentSource(fundSource: FundSource) {
-    this.confirmDialog.open({
-      data: {
-        message: `Are you sure, you want to delete ${fundSource.name} payment source?`
-      }
-    });
+    this.confirmDialog.open(`Are you sure, you want to delete ${fundSource.name} payment source?`);
   }
 
   openAddPaymentSource() {

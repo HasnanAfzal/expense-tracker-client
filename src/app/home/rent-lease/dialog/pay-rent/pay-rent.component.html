@@ -1,0 +1,52 @@
+<div class="pay-rent">
+    <div class="pay-rent-header">
+        <h3 class="pay-rent-header-title">Sara Mansion</h3>
+        <form [formGroup]="createPayedRentForm">
+            <mat-form-field appearance="fill">
+                <mat-label>Rent Month</mat-label>
+                <input matInput [matDatepicker]="dp" required formControlName="rentMonth" autocomplete="off">
+                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker #dp
+                                startView="year"
+                                (monthSelected)="chosenMonthHandler($event, dp)"
+                                panelClass="example-month-picker">
+                </mat-datepicker>
+                <mat-error *ngIf="createPayedRentForm.get('rentMonth')?.invalid">Please enter rent month</mat-error>
+                </mat-form-field>
+            <mat-form-field appearance="fill" floatLabel="always">
+                <mat-label>Rent Amount</mat-label>
+                <input matInput type="number" class="right-align" placeholder="0" required formControlName="rentAmount" autocomplete="off">
+                <span matPrefix>$&nbsp;</span>
+                <mat-error *ngIf="createPayedRentForm.get('rentAmount')?.invalid">Please enter rent amount</mat-error>
+            </mat-form-field>
+
+            <div formGroupName="additionalInfo">
+                <mat-form-field appearance="fill" floatLabel="always" *ngFor="let additionalFieldName of additionalFieldNames">
+                    <mat-label>{{ additionalFieldName }}</mat-label>
+                    <input matInput type="number" class="right-align" placeholder="0" [formControlName]="additionalFieldName" autocomplete="off">
+                    <span matPrefix>$&nbsp;</span>
+                </mat-form-field>
+            </div>
+
+            <div class="pay-rent-header-footer">
+                <div>
+                    <app-add-field (newFieldCreated)="onNewFieldCreated($event)"></app-add-field>
+                </div>
+                  <button type="submit" mat-flat-button color="accent" class="pay-rent-header-footer-button">Pay Rent</button>
+            </div>
+
+        </form>
+    </div>
+    <div class="pay-rent-body">
+        <div class="pay-rent-body-list" *ngFor="let payedRent of payedRents">
+            <div class="pay-rent-body-list-details">
+                {{ payedRent.rentalMonth | date:'MMM YYYY' }} - {{ payedRent.rentalAmount }}
+            </div>
+            <div class="pay-rent-body-list-actions">
+                <button mat-icon-button class="red-color" (click)="onDeletePayedRentClick(payedRent)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

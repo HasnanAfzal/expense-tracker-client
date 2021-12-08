@@ -70,11 +70,7 @@ export class VendorsComponent implements OnInit {
   }
 
   deleteVendor(vendor: Vendor) {
-    const confirmDialogRef = this.confirmDialog.open({
-      data: {
-        message: `Are you sure, you want to delete ${vendor.name} vendor?`
-      }
-    });
+    const confirmDialogRef = this.confirmDialog.open(`Are you sure, you want to delete ${vendor.name} vendor?`);
 
     confirmDialogRef.afterClosed.subscribe((result: Boolean) => {
     });

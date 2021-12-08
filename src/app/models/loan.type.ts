@@ -1,11 +1,15 @@
+import { Label } from './label.type';
+import { Vendor } from './vendor.type';
+
 export interface Loan {
     name: string
-    loanOpenDate: Date;
-    loanPeriod: number;
+    loanStartDate: Date;
+    loanDuration: number;
     loanAmount: number;
-    loanInterestRate: number;
-    loanEnddate: Date;
-    vendorId: string;
+    loanInterestDate: number;
+    loanEndDate: Date;
+    vendor: Vendor;
     emiDueDay: number;
     emiAmount: number;
+    labels?: Array<Label>
 }

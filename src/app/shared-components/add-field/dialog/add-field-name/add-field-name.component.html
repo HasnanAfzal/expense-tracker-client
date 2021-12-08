@@ -1,0 +1,15 @@
+<div class="add-field-name">
+        <form [formGroup]="createFieldNameForm">
+            <div class="add-field-name-body" >
+                <mat-form-field appearance="fill">
+                    <mat-label>Field Name</mat-label>
+                    <input matInput type="text" formControlName="fieldName" autocomplete="off" required>
+                    <mat-error *ngIf="createFieldNameForm.get('fieldName')!.invalid">Please enter name of the field to be added</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="add-field-name-footer">
+                <button mat-flat-button color="accent" (click)="onCreateFieldClick()">Create Field</button>
+            </div>
+        </form>
+        
+</div>

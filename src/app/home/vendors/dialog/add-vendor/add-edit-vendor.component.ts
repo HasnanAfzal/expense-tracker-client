@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { EventEmitter } from '@angular/core';
 import { DialogConfig } from 'src/app/dialog/dialog-config';
 
 @Component({

@@ -1,0 +1,39 @@
+@import '../../shared-styles.scss';
+
+.rent-lease {
+    padding: 18px;
+
+    &-header {
+        &-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        margin-bottom: 18px;
+    }
+
+    &-body {
+        &-create {
+            text-align: end;
+        }
+
+        &-lists {
+            overflow: auto;
+            height: 100%;
+            margin-top: 12px;
+        }
+
+        &-list {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid black;
+            font-size: 1.2em;
+
+            .red-color {
+                color: red;
+            }
+
+        }
+
+    }
+}

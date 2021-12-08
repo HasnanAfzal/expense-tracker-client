@@ -51,11 +51,7 @@ export class ItemsComponent implements OnInit {
   }
 
   onDeleteClick(item: Item) {
-    this.confirmDialog.open({
-      data: {
-        message: `Are you sure, you want to delete ${item.name} item?`
-      }
-    });
+    this.confirmDialog.open(`Are you sure, you want to delete ${item.name} item?`);
   }
 
   onEditClick(item: Item) {

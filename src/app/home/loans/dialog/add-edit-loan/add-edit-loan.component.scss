@@ -1,0 +1,23 @@
+.add-loan {
+    height: 100%;
+
+    &-body {
+        height: calc(100% - 94px);
+        overflow: auto;
+        margin-bottom: 12px;
+        .mat-form-field {
+            width: 100%;
+        }
+    }
+
+    &-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .right-align {
+        text-align: end;
+    }
+
+}

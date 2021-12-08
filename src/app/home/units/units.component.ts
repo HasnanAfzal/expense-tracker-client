@@ -44,11 +44,7 @@ export class UnitsComponent implements OnInit {
   }
 
   onDeleteClick(unit: Unit) {
-    this.confirmDialog.open({
-      data: {
-        message: `Are you sure, you want to delete ${unit.name} unit?`
-      }
-    });
+    this.confirmDialog.open(`Are you sure, you want to delete ${unit.name} unit?`);
   }
 
   onEditClick(unit: Unit) {

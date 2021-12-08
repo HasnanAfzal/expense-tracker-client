@@ -1,0 +1,88 @@
+<form [formGroup]="createLoanForm" class="add-loan">
+
+    <div class="add-loan-body">
+        <mat-form-field appearance="fill">
+            <mat-label>Vendor</mat-label>
+            <input type="text" matInput [matAutocomplete]="autoVendors" formControlName="vendor" required autocomplete="off">
+            <mat-autocomplete #autoVendors="matAutocomplete" [displayWith]="displayProperty">
+            <mat-option *ngFor="let vendor of filteredVendors" [value]="vendor">
+                {{ vendor.name }}
+            </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="createLoanForm.get('vendor')!.invalid">Please select a vendor</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Labels</mat-label>
+            <mat-select formControlName="labels" multiple>
+            <mat-option *ngFor="let label of labels" [value]="label._id">{{label.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Loan Name</mat-label>
+            <input matInput type="text" formControlName="loanName" autocomplete="off" required>
+            <mat-error *ngIf="createLoanForm.get('loanName')!.invalid">Please enter loan name</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Loan Duration</mat-label>
+            <input matInput type="number" formControlName="loanDuration" autocomplete="off" required>
+            <span matSuffix>Months&nbsp;</span>
+            <mat-error *ngIf="createLoanForm.get('loanDuration')!.invalid">Please enter loan duration</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" floatLabel="always">
+            <mat-label>Loan Amount</mat-label>
+            <input matInput type="number" class="right-align" placeholder="0" required formControlName="loanAmount" autocomplete="off">
+            <span matPrefix>$&nbsp;</span>
+            <mat-error *ngIf="createLoanForm.get('loanAmount')?.invalid">Please loan amount</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Loan Start Date</mat-label>
+            <input matInput [matDatepicker]="loanStartDatePicker" required formControlName="loanStartDate">
+            <mat-datepicker-toggle matSuffix [for]="loanStartDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #loanStartDatePicker></mat-datepicker>
+            <mat-error *ngIf="createLoanForm.get('loanStartDate')!.invalid">Please select loan start date</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Loan End Date</mat-label>
+            <input matInput [matDatepicker]="loanEndDatePicker" required formControlName="loanEndDate">
+            <mat-datepicker-toggle matSuffix [for]="loanEndDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #loanEndDatePicker></mat-datepicker>
+            <mat-error *ngIf="createLoanForm.get('loanEndDate')!.invalid">Please select loan end date</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" floatLabel="always">
+            <mat-label>EMI Due Day</mat-label>
+            <input matInput type="number" placeholder="1 - 31" required formControlName="emiDueDay" autocomplete="off">
+            <span matSuffix>Day&nbsp;</span>
+            <mat-error *ngIf="createLoanForm.get('emiDueDay')?.invalid">EMI due date should be between 1 to 31</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" floatLabel="always">
+            <mat-label>EMI Amount</mat-label>
+            <input matInput type="number" class="right-align" placeholder="0" required formControlName="emiAmount" autocomplete="off">
+            <span matPrefix>$&nbsp;</span>
+            <mat-error *ngIf="createLoanForm.get('loanAmount')?.invalid">Please enter emi amount</mat-error>
+          </mat-form-field>
+
+          <div formGroupName="additionalInfo">
+            <mat-form-field appearance="fill" floatLabel="always" *ngFor="let additionalInfoFieldName of additionalInfoFieldNames; let i = index">
+              <mat-label>{{ additionalInfoFieldName }}</mat-label>
+              <input matInput type="number" class="right-align" placeholder="0" [formControlName]="additionalInfoFieldName" autocomplete="off">
+              <span matPrefix>$&nbsp;</span>
+            </mat-form-field>
+          </div>
+
+    </div>
+
+
+    <div class="add-loan-footer">
+        <app-add-field (newFieldCreated)="onNewFieldCreated($event)"></app-add-field>
+        <button type="submit" mat-flat-button color="accent">{{ editMode ? 'Edit' : 'Create' }} Loan</button>
+    </div>
+
+</form>

@@ -1,11 +1,11 @@
-<!-- <div class="create-spending">
+<div class="create-spending">
   <div class="create-spending-container">
     <div class="create-spending-header">
       <div class="create-spending-header-title">
         Create Spending
       </div>
     </div>
-    <div class="create-spending-body">
+    <div class="create-spending-body" #createSpendingBody>
 
       <form (ngSubmit)="onSubmit()" [formGroup]="createSpendingForm">
 
@@ -110,78 +110,63 @@
 
         </div>
 
-        <div>
-          <mat-form-field appearance="fill" floatLabel="always">
-            <mat-label>Packing Charges</mat-label>
-            <input matInput type="number" class="right-align" placeholder="0" formControlName="packingCharges">
-            <span matPrefix>$&nbsp;</span>
-          </mat-form-field>
-  
-          <mat-form-field appearance="fill" floatLabel="always">
-            <mat-label>Delivery Charges</mat-label>
-            <input matInput type="number" class="right-align" placeholder="0" formControlName="deliveryCharges">
-            <span matPrefix>$&nbsp;</span>
-          </mat-form-field>
-  
-          <mat-form-field appearance="fill" floatLabel="always">
-            <mat-label>Total Amount</mat-label>
-            <input matInput type="number" class="right-align" placeholder="0" formControlName="totalAmount" required>
-            <span matPrefix>$&nbsp;</span>
-            <mat-error *ngIf="createSpendingForm.get('totalAmount')!.invalid">Please enter total amount</mat-error>
-          </mat-form-field>
-        </div>
-
-        <div *ngIf="!nonEmiTransaction" class="create-spending-emi-section" formGroupName="emi">
-          
+        <div *ngIf="!nonEmiTransaction">
           <mat-form-field appearance="fill">
-            <mat-label>EMI Name</mat-label>
-            <input matInput type="text" required formControlName="name">
-            <mat-error *ngIf="createSpendingForm.get('emi.name')?.invalid">Please enter emi name</mat-error>
+            <mat-label>Loan</mat-label>
+            <input type="text" matInput [matAutocomplete]="loans" formControlName="loanId" required>
+            <mat-autocomplete #loans="matAutocomplete" [displayWith]="displayProperty">
+              <mat-option *ngFor="let loan of filteredLoans" [value]="loan">
+                {{ loan.name }}
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="createSpendingForm.get('loanId')!.invalid">Please select a loan</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="fill" floatLabel="always">
-            <mat-label>Duration</mat-label>
-            <input matInput type="number" placeholder="0" required formControlName="duration">
-            <span matSuffix>Months&nbsp;</span>
-            <mat-error *ngIf="createSpendingForm.get('emi.duration')?.invalid">Please enter emi duration</mat-error>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill">
-            <mat-label>Start Date</mat-label>
-            <input matInput [matDatepicker]="emiStartDatePicker" required formControlName="startDate">
-            <mat-datepicker-toggle matSuffix [for]="emiStartDatePicker"></mat-datepicker-toggle>
-            <mat-datepicker #emiStartDatePicker></mat-datepicker>
-            <mat-error *ngIf="createSpendingForm.get('emi.startDate')?.invalid">Please select emi start date</mat-error>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill" floatLabel="always">
-            <mat-label>Amount</mat-label>
-            <input matInput type="number" class="right-align" placeholder="0" required formControlName="amount">
+            <mat-label>Remaining Amount</mat-label>
+            <input matInput type="number" class="right-align" placeholder="0" formControlName="remainingAmount">
             <span matPrefix>$&nbsp;</span>
-            <mat-error *ngIf="createSpendingForm.get('emi.amount')?.invalid">Please select emi amount</mat-error>
           </mat-form-field>
 
         </div>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Payment Source</mat-label>
-          <input type="text" matInput [matAutocomplete]="paymentSources" formControlName="paymentSource" required>
-          <mat-autocomplete #paymentSources="matAutocomplete" [displayWith]="displayProperty">
-            <mat-option *ngFor="let paymentSource of filteredPaymentSources" [value]="paymentSource">
-              {{ paymentSource.name }}
-            </mat-option>
-          </mat-autocomplete>
-          <mat-error *ngIf="createSpendingForm.get('paymentSource')!.invalid">Please select a payment source</mat-error>
+        <mat-form-field appearance="fill" floatLabel="always" *ngIf="nonEmiTransaction">
+          <mat-label>Total Amount</mat-label>
+          <input matInput type="number" class="right-align" placeholder="0" formControlName="totalAmount" required>
+          <span matPrefix>$&nbsp;</span>
+          <mat-error *ngIf="createSpendingForm.get('totalAmount')!.invalid">Please enter total amount</mat-error>
         </mat-form-field>
 
+        <mat-form-field appearance="fill">
+          <mat-label>Fund Source</mat-label>
+          <input type="text" matInput [matAutocomplete]="paymentSources" formControlName="fundSource" [required]="nonEmiTransaction">
+          <mat-autocomplete #paymentSources="matAutocomplete" [displayWith]="displayProperty">
+            <mat-option *ngFor="let fundSource of filteredFundSources" [value]="fundSource">
+              {{ fundSource.name }}
+            </mat-option>
+          </mat-autocomplete>
+          <mat-error *ngIf="createSpendingForm.get('fundSource')!.invalid">Please select a payment source</mat-error>
+        </mat-form-field>
+
+        <div formGroupName="additionalInfo">
+          <mat-form-field appearance="fill" floatLabel="always" *ngFor="let additionalFieldName of additionalFieldNames">
+              <mat-label>{{ additionalFieldName }}</mat-label>
+              <input matInput type="number" class="right-align" placeholder="0" [formControlName]="additionalFieldName" autocomplete="off">
+              <span matPrefix>$&nbsp;</span>
+          </mat-form-field>
+        </div>
+
         <div class="create-spending-footer">
-          <mat-checkbox (change)="onEmiTransactionChange()">
-            EMI Transaction
-          </mat-checkbox>
-          <button type="submit" mat-flat-button color="accent">Create Spending</button>
+          <div>
+            <app-add-field (newFieldCreated)="onNewFieldCreated($event)"></app-add-field>
+            <mat-checkbox (change)="onEmiTransactionChange()">
+              EMI Transaction
+            </mat-checkbox>
+          </div>
+          <button type="submit" mat-flat-button color="accent" class="create-spending-footer-button">Create Spending</button>
         </div>
 
       </form>
     </div>
   </div>
-</div> -->
+</div>

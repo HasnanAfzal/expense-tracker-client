@@ -18,11 +18,15 @@ export class ConfirmDialogService {
     private injector: Injector
   ) {}
 
-  open(config: DialogConfig) {
+  open(message: string) {
 
     // create a map with the config
     const map = new WeakMap();
-    map.set(DialogConfig, config);
+    map.set(DialogConfig, {
+      data: {
+        message
+      }
+    });
 
     // add the DialogRef to dependency injection
     const dialogRef = new DialogRef();

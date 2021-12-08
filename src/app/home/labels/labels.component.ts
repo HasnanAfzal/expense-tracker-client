@@ -44,11 +44,7 @@ export class LabelsComponent implements OnInit {
   }
 
   onDeleteClick(label: Label) {
-    this.confirmDialog.open({
-      data: {
-        message: `Are you sure, you want to delete ${label.name} label?`
-      }
-    });
+    this.confirmDialog.open(`Are you sure, you want to delete ${label.name} label?`);
   }
 
   onEditClick(label: Label) {

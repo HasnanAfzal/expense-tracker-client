@@ -12,6 +12,7 @@ import { UnitsComponent } from './home/units/units.component';
 import { VendorsComponent } from './home/vendors/vendors.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { RentLeaseComponent } from './home/rent-lease/rent-lease.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -26,7 +27,8 @@ const routes: Routes = [
     { path: 'units', component: UnitsComponent },
     { path: 'labels', component: LabelsComponent },
     { path: 'recharges', component: RechargesComponent },
-    { path: 'loans', component: LoansComponent }
+    { path: 'loans', component: LoansComponent },
+    { path: 'rent-lease', component: RentLeaseComponent }
   ], data: { animation: 'home' } }
 ];
 

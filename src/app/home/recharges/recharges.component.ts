@@ -57,11 +57,7 @@ export class RechargesComponent {
   }
 
   onDeleteRechargeClick(recharge: Recharge) {
-    this.confirmDialog.open({
-      data: {
-        message: 'Are you sure, you want to delete the recharge?'
-      }
-    });
+    this.confirmDialog.open('Are you sure, you want to delete the recharge?');
   }
 
 }

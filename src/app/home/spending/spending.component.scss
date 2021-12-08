@@ -39,7 +39,7 @@
 
     &-body {
         overflow: auto;
-        height: calc(100vh - 60px);
+        height: calc(100vh - 70px);
     }
 
     &-items-tabs {
@@ -89,6 +89,11 @@
         align-items: center;
         justify-content: space-between;
         padding-left: 12px;
+
+        &-button {
+            flex-shrink: 0;
+        }
+
     }
 
     &-emi-section {
